@@ -3,25 +3,28 @@
   "builds": [
     {
       "src": "public/index.php",
-      "use": "vercel-php@0.7.3"
+      "use": "vercel-php@0.7.3",
+      "config": {
+        "runtime": "php-8.2"
+      }
     }
   ],
   "routes": [
-    {
-      "src": "/build/(.*)",
-      "dest": "/public/build/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/public/index.php"
-    }
+    { "src": "/build/(.*)", "dest": "/public/build/$1" },
+    { "src": "/(.*)", "dest": "/public/index.php" }
   ],
   "env": {
     "APP_ENV": "production",
-    "APP_DEBUG": "false",
+    "APP_DEBUG": "true",
     "LOG_CHANNEL": "stderr",
     "CACHE_DRIVER": "array",
     "SESSION_DRIVER": "cookie",
-    "QUEUE_CONNECTION": "sync"
+    "QUEUE_CONNECTION": "sync",
+    
+    "VIEW_COMPILED_PATH": "/tmp/views",
+    "CACHE_PATH": "/tmp/cache",
+    "CONFIG_PATH": "/tmp/config",
+    "BOOTSTRAP_CACHE_PATH": "/tmp/bootstrap",
+    "STORAGE_PATH": "/tmp/storage"
   }
 }
